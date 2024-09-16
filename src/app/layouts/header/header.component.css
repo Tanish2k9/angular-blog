@@ -1,0 +1,24 @@
+.nav-container{
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* padding:16px 0px; */
+}
+ul{
+    display: flex;
+    align-items: center;
+}
+ul li{
+    padding: 0px 8px;
+}
+.nav-links-container{
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,15 @@
+.search-container{
+    margin: 30px;
+}
+input[type = "text"]{
+    padding: 16px;
+    margin-right: 24px;
+    width: 40vw;
+}
+select{
+    padding: 16px;
+}
+.content-wrapper{
+    display: flex;
+    justify-content: center;
+}

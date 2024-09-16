@@ -1,0 +1,42 @@
+.wrapper{
+    
+    border: 1px solid white;
+}
+.title{
+    text-align: center;
+}
+.signup-container{
+    max-width: 500px;
+    border: 2px solid black;
+    margin:16px auto;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    /* width: 70%; */
+    padding: 0px 16px;
+    margin:16px 0px;
+}
+
+input,select,textarea{
+    padding: 16px;
+    font-family: inherit;
+    font-size: 16px;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+button{
+    padding: 8px 16px;
+    font-size: 20px;
+}
+.account{
+    padding: 16px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 24px;
+    text-align: end;
+    color: blue;
+}

@@ -1,0 +1,54 @@
+.my-post-container{
+    padding: 30px 0px;
+}
+.heading-container{
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 12px;
+    max-width: 600px;
+    margin:0 auto;
+}
+.title{
+    text-align: center;
+}
+.description{
+    text-align: center;
+    margin-bottom: 16px;
+}
+.buttons-container{
+    display: flex;
+    justify-content: center;
+    gap:16px;
+}
+.table-container{
+    margin:30px 0px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+}
+img {
+    max-width: 100px; /* Adjust size of images */
+    height: auto;
+}
+.column-1 {
+    width: 5%; /* Narrow width for S.No. */
+}
+.column-2 {
+    width: 10%; /* Wider width for Image */
+}
+.column-3 {
+    width: 45%; /* Even wider for Title */
+}
+.column-4 {
+    width: 20%; /* Width for Action column */
+}

@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* border: 1px solid blueviolet; */
+
+}
+body{
+  font-family: "Nerko One", cursive;
+  font-weight: 400;
+  font-style: normal;
+  /* background-color: #AFDDE5; */
+}
+
+*:not(:defined){
+    border: none;
+}
+.cover-viewport{
+    min-height: calc(100vh - 150px);
+    
+}
+
+li{
+    list-style: none;
+}
+.global-wrapper{
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.hero-container{
+    height: 12vw;
+    background-color: white;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.hero-heading{
+    text-align: center;
+    display: flex;
+    font-size: 10vw;
+    justify-content: center;
+    align-items: center;
+    color:black;
+    height: 100%;
+}
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:16px;
+    /* grid-auto-rows: minmax(200px, auto); */
+}
+.btn{
+    padding: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: white;
+    cursor: pointer;
+}

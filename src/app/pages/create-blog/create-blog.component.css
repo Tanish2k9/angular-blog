@@ -1,0 +1,44 @@
+.title{
+    text-align: center;
+    margin-bottom: 16px;
+ }
+
+.form-wrapper{
+    max-width: 700px;
+
+    margin:0px auto;
+    border:2px solid black;
+    padding: 16px 0px;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    /* width: 70%; */
+    padding: 0px 16px;
+    margin:16px 0px;
+}
+
+input,select,textarea{
+    padding: 16px;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.options-file-container{
+    display: flex;
+    justify-content: space-between;
+    gap:16px;
+    flex-wrap: wrap;
+}
+.fix-width{
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+button{
+    padding: 8px 16px;
+    font-size: 20px;
+}
