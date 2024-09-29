@@ -1,4 +1,24 @@
-<div class="card" (click)="navigateToPage()" >
+<div class="card" (click)="navigateToPage(blogData.id)" *ngIf="blogData" >
+    <img src={{blogData?.imageUrl}} alt="" class="card-img">
+    <h3>{{blogData?.title}}</h3>
+    <p class="blog-content">{{blogData?.content}}</p>
+    <div class="card-data">
+        <p class="created-at">{{blogData?.createdDate}}</p>
+        <p class="views">Views ({{blogData?.viewCount}})</p>
+    </div>
+    <div class="card-footer-data">
+        <div class="card-user-data">
+            <!-- <img src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=" alt="" class="card-user-img"> -->
+            <p class="username">Author:{{blogData?.createdBy?.username}}</p>
+        </div> 
+        <div class="card-category">
+            {{blogData?.category?.title}}
+        </div> 
+    </div>
+</div>
+
+
+<div class="card" (click)="navigateToPage(2)" *ngIf="!blogData" >
     <img src="https://images.pexels.com/photos/28220698/pexels-photo-28220698/free-photo-of-nguoitamchuyenhouse-sai-gon-vi-t-nam-2020-saigon-vietnam-2020.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" class="card-img">
     <h3>Computer Networking</h3>
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur optio error quos earum asperiores illum necessitatibus, a ullam laudantium quo nisi, corrupti dolore? Assumenda repudiandae odit eius, nemo esse cum.</p>

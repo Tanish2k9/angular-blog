@@ -1,0 +1,9 @@
+<div class="pagination-container">
+    <div class=" pagination-wrapper">
+        <button class="previous btn" (click)="decreasePageNumber()" [disabled]="diablePreviousBtn()">Previous</button>
+
+        <div class="current page">{{pageNumber+1}} <span class="out-of">out of {{totalPages==0?1:totalPages}}</span></div>
+
+        <button class="next btn" (click)="increasePageNumber()" [disabled]="disableNextBtn()">Next</button>
+    </div>
+</div>

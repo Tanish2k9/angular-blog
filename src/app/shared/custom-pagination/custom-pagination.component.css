@@ -1,0 +1,18 @@
+.pagination-container{
+    padding:30px 0px;
+    /* border:1px solid black; */
+}
+.pagination-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:16px;
+}
+.previous,.next{
+    padding: 8px 25px;
+}
+
+.out-of{
+    font-size: 12px;
+    color:gray;
+}

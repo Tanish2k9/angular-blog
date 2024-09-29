@@ -4,7 +4,7 @@
         <h3 class="description">From here you can manage all your blog posts </h3>
 
         <div class="buttons-container">
-            <button  class="btn">View All Posts</button>
+            <!-- <button  class="btn">View All Posts</button> -->
             <button routerLink="/create-post" class="btn">Add New Post</button>
             <button class="btn" routerLink="/">Back To Home</button>
         </div>
@@ -20,25 +20,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="column-1" >1</td>
-                    <td class="column-2"><img src="image1.jpg" alt="Image 1"></td>
-                    <td class="column-3">Sample Title 1</td>
-                    <td class="column-4"><button class="btn">Action 1</button></td>
-                </tr>
-                <tr>
-                    <td class="column-1">2</td>
-                    <td class="column-2"><img src="image2.jpg" alt="Image 2"></td>
-                    <td class="column-3">Sample Title 2</td>
-                    <td class="column-4"><button class="btn">Action 2</button></td>
-                </tr>
-                <tr>
-                    <td class="column-1">3</td>
-                    <td class="column-2"><img src="image3.jpg" alt="Image 3"></td>
-                    <td class="column-3">Sample Title 3</td>
-                    <td class="column-4"><button class="btn">Action 3</button></td>
+                <tr *ngFor="let blog of myBlogs; index as i">
+                    <td class="column-1" >{{i+1}}</td>
+                    <td class="column-2"><img class="post-img" src={{blog.imageUrl}} alt="Image 1"></td>
+                    <td class="column-3">{{blog.title}}</td>
+                    <td class="column-4">
+                        <div class="btn-group">
+                        <button class="btn" [routerLink]="['/blog',blog.id]">view</button>
+                         <button class="btn" [routerLink]="['/update-post',blog.id]">edit</button>
+                         <button class="btn" (click)="onDelete(blog.id)">delete</button>
+                        </div>
+                    </td>
+                      
                 </tr>
             </tbody>
         </table>
+        <div *ngIf="myBlogs?.length === 0" class="no-post">
+            <h3>Please upload your blog</h3>
+        </div>
     </div>
+    <app-custom-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [lastPage]="lastPage" [totalElements]="totalElements" [totalPages]="totalPages"    (sentPageNumber)="onPageChanged($event)" ></app-custom-pagination>
 </div>

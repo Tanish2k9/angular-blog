@@ -1,16 +1,14 @@
+
+
+<app-page-loader *ngIf="isLoadingCount>0"></app-page-loader>
+<div >
 <div class="hero-container">
     <h1 class="hero-heading">Popular Blogs </h1>
 </div>
 
 <div class="card-container popular-card-container">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+    <app-card *ngFor="let blog of popularPosts" [blogData]="blog"></app-card>
+</div>
+
+<app-custom-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [lastPage]="lastPage" [totalElements]="totalElements" [totalPages]="totalPages"    (sentPageNumber)="onPageChanged($event)" ></app-custom-pagination>
 </div>

@@ -8,15 +8,22 @@
                 <li><a routerLink="/" class="nav-link">Home</a></li>
                 <li><a routerLink="/popular" class="nav-link">Popular</a></li>
                 <li><a routerLink="/all-blogs" class="nav-link">Search</a></li>
-                <li><a routerLink="/post" class="nav-link">Post</a></li>
                 <!-- <li><a href="#" class="nav-link">MostViewed</a></li> -->
-                <li><a href="/signup" class="nav-link">Sign Up</a></li>
-                <li><a href="/login" class="nav-link">Log In</a></li>
-                <li><a href="#" class="nav-link">Log Out</a></li>
+                
+                @if(isLoggedIn){
+                    <li><a routerLink="/post" class="nav-link">Post</a></li>
+                    <li><a  class="btn" (click)="logout()">Log Out</a></li>
+                }
+                @else {
+                    <li><a routerLink="/signup" class="nav-link">Sign Up</a></li>
+                    <li><a routerLink="/login" class="nav-link">Log In</a></li>
+                }
             </ul>
-            <div>
-                user
-            </div>
+            @if(isLoggedIn){
+                <div>
+                    {{userData?.username}}
+                </div>
+            }
         </div>
     </nav>
 </div>

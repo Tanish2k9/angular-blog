@@ -1,33 +1,43 @@
 <div class="update-post-container">
     <h1 class="title">UPDATE POST</h1>
    <div class="form-wrapper">
-    <form>
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="input-container">
             <label>Title</label>
-            <input type="text">
+            <input type="text" formControlName="title">
+            <div class="errors-container" *ngIf="updateForm.controls?.['title']?.touched">
+                <span class="error-text" *ngIf="updateForm.controls?.['title']?.errors?.['required']"> This Is Required</span>
+                <span class="error-text" *ngIf="updateForm.controls?.['title']?.errors?.['minlength']">title must be at least 20 characters long</span>
+            </div>
         </div>
         <div class="options-file-container">
             <div class="input-container fix-width">
                 <label>Select a category</label>
-                <select name="" id="">
-                    <option value="">Design</option>
-                    <option value="">Design</option>
-                    <option value="">Design</option>
-                    <option value="">Design</option>
-                    <option value="">Design</option>
+                <select  id="" formControlName="selectedCategoryId">
+                    <option value="">--Select an Item--</option>
+                    <option *ngFor="let category of categories" [value]="category.id">{{ category.title }}</option>
                 </select>
+                <div class="errors-container" *ngIf="updateForm.controls?.['selectedCategoryId']?.touched">
+                    <span class="error-text" *ngIf="updateForm.controls?.['selectedCategoryId']?.errors?.['required']"> This Is Required</span>
+                </div>
             </div>
             <div class="input-container fix-width">
-                <label>Choose post image</label>
-                <input type="file" name="select post image">
+                <label>Update post image</label>
+                <input type="file" name="select post image" (change)="onFileChange($event)">
             </div>
         </div>
         <div class="input-container">
             <label>Content</label>
-            <textarea name="" id="" rows="5"></textarea>
+            <textarea name="" id="" rows="5" formControlName="content"></textarea>
+            <div class="errors-container" *ngIf="updateForm.controls?.['content']?.touched">
+                <span class="error-text" *ngIf="updateForm.controls?.['content']?.errors?.['required']"> This Is Required</span>
+                <span class="error-text" *ngIf="updateForm.controls?.['content']?.errors?.['minlength']">title must be at least 20 characters long</span>
+            </div>
         </div>
         <div class=" btn-container">
-            <button class="btn">Update</button>
+            <button class="btn">
+                <app-api-loader *ngIf="isApiLoading"></app-api-loader>
+                Update</button>
         </div>
     </form>
 

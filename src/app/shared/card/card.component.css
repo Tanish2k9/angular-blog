@@ -29,3 +29,16 @@
     align-items: center;
     gap: 16px;
 }
+.blog-content{
+    /* word-wrap:break-word; */
+    /* display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 3; 
+    overflow: hidden; 
+    text-overflow: ellipsis;  */
+    /* word-break: break-all; */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis (...) at the end */
+    max-height: calc(3 * 1.2em); /* Fallback for browsers that don't support it */
+    line-height: 1.2em; 
+}

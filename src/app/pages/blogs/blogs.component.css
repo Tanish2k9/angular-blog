@@ -1,10 +1,14 @@
 .search-container{
     margin: 30px;
 }
+.no-blog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 input[type = "text"]{
     padding: 16px;
-    margin-right: 24px;
-    width: 40vw;
+    width: 100%;
 }
 select{
     padding: 16px;
@@ -12,4 +16,17 @@ select{
 .content-wrapper{
     display: flex;
     justify-content: center;
+    gap:16px;
+    flex-wrap: wrap;
+}
+.input-container{
+    flex:11;
+    display: flex;
+    min-width: 300px;
+    width: 100%;
+    flex-shrink: 1;
+}
+select{
+    flex:1;
+    flex-shrink: 0;
 }

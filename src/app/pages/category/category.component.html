@@ -1,0 +1,41 @@
+<div class="my-category-container">
+    <div class="heading-container">
+        <h2 class="title">All Categories</h2>
+        <h3 class="description">From here you can manage categories </h3>
+
+        <div class="input-container">
+            <input type="text" name="categoryTitle" [(ngModel)]="categoryTitle" #inputField autocomplete="false" required>
+            <button class="btn btn-action" *ngIf="!categoryEdit" (click)="onAdd()">Add Category</button>
+            <div *ngIf="categoryEdit">
+                <button class="btn" (click)="onUpdate()" > update </button>
+                <button class="btn" (click)="onCancel()"> cancel </button>
+            </div>
+            
+        </div>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="column-1">S.No.</th>
+                    <th class="column-2">Title</th>
+                    <th class="column-3">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let category of categories; index as i">
+                    <td class="column-1" >{{i+1}}</td>
+                    <td class="column-2">{{category.title}}</td>
+                    <td class="column-3">
+                        <div class="btn-group">
+                         <button class="btn" [disabled]="categoryEdit" (click)="onEdit(category.id)">edit</button>
+                         <button class="btn" [disabled]="categoryEdit"(click)="onDelete(category.id)">delete</button>
+                        </div>
+                    </td>
+                      
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

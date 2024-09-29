@@ -2,18 +2,20 @@
     <div class="login-container">
 
         <h1 class="title">Login</h1>
-        <form class="form-container">
+        <form class="form-container" [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
             <div class="input-container">
                 <label>Email</label>
-                <input type="text">
+                <input type="text" formControlName="email">
             </div>
             <div class="input-container">
                 <label>Password</label>
-                <input type="text">
+                <input type="text" formControlName="password">
             </div>
             <div class="btn-container">
                 <button class="btn">
+                    <app-api-loader *ngIf="isLoading"></app-api-loader>
                     Submit
+                    
                 </button>
             </div>
         </form>

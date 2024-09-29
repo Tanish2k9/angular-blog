@@ -20,6 +20,10 @@
     height: 400px;
     object-fit: cover;
 }
+.content-container{
+    word-wrap: break-word;
+    word-break: break-all;
+}
 .author-data{
     display: flex;
     /* justify-content: space-between; */
@@ -38,9 +42,20 @@
     align-items: center;
     margin:8px 0px;
 }
+.add-comment-container{
+    display: flex;
+    gap:16px;
+    align-items:start;
+    margin:8px 0px;
+}
+
+.likes{
+    border:2px solid black;
+}
 textarea{
     width: 100%;
-    margin:8px 0px;
+    max-width: 100%;
+    
     padding: 8px 16px;
     font-size: 16px;
     font-family: "Nerko One", cursive;
@@ -57,6 +72,26 @@ textarea{
     background-color: #F0F0F0;
     margin: 8px 0px;
     padding: 8px 16px;
+}
+
+.comment-user-data{
+    padding: 8px 0px;
+}
+.comment-content-container{
+    flex:9;
+}
+.comment-action-container{
+    flex:3;
+    min-width: 100px;
+}
+.btn-full{
+    width: 50%;
+}
+.edit-input{
+    width: 100%;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 16px;
 }
 .user-comment-img{
     width: 20px;

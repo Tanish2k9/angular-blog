@@ -4,26 +4,24 @@
 
 <div class="search-container">
     <div class="content-wrapper">
-        <input type="text" name="" id="" placeholder="search by title">
-        <select name="" id="">
-            <option value="none" default >Select a category</option>
-            <option value="none">Design</option>
-            <option value="none">It</option>
-            <option value="none">Springboot</option>
-            <option value="none">Angular</option>
+        <div class="input-container">        
+            <input type="text" name="searchField" [(ngModel)]="searchField" id="" placeholder="search by title">
+            <button class="btn" (click)="onSend()">
+                <app-api-loader *ngIf="isApiLoading"></app-api-loader>
+                send</button>
+        </div>
+        <select  id="" name="selectedCategoryId" (change)="onSelectChange($event)">
+            <option value="">--Select a Category--</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.title }}</option>
         </select>
     </div>
 </div>
-
+<app-page-loader *ngIf="isLoadingCount>0"></app-page-loader>
 <div class="card-container most-viewed-container">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+
+    <app-card *ngFor="let blog of allSearchedBlogs" [blogData]="blog"></app-card>
+   <div *ngIf="allSearchedBlogs?.length=== 0" class="no-blog"> No Blogs Found</div>
 </div>
+
+
+<app-custom-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [lastPage]="lastPage" [totalElements]="totalElements" [totalPages]="totalPages"    (sentPageNumber)="onPageChanged($event)" ></app-custom-pagination>

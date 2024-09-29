@@ -4,12 +4,10 @@
 <section class="popular-post-container">
     <div class="popular-heading">
         <h2>Popular Posts</h2>
-        <a href="" class="view-all">view all</a>
+        <a  [routerLink]="['/popular']" class="view-all">view all</a>
     </div>
     <div class="card-container">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+        <app-card *ngFor="let blog of popularBlogs" [blogData]="blog"></app-card>
     </div>
     
 
@@ -18,12 +16,10 @@
 <section class="popular-post-container">
     <div class="popular-heading">
         <h2>Most Viewed Blog</h2>
-        <a href="" class="view-all">view all</a>
+        <a [routerLink]="['/most-viewed']" class="view-all">view all</a>
     </div>
     <div class="card-container">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+        <app-card *ngFor="let blog of mostViewedBlogs" [blogData]="blog"></app-card>
     </div>
 
 </section>
@@ -31,18 +27,13 @@
 <section class="popular-post-container">
     <div class="popular-heading">
         <h2>All Blogs</h2>
-        <a href="" class="view-all">view all</a>
+        <a [routerLink]="['/all-blogs']" class="view-all">view all</a>
     </div>
-    <div class="card-container">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+    <div class="card-container" >
+        <app-card *ngFor="let blog of allBlogs" [blogData]="blog"></app-card>
     </div>
 
 </section>
+
+<app-page-loader *ngIf="isLoadingCount>0"></app-page-loader>
+ <!-- <app-api-loader *ngIf="isLoading"></app-api-loader> -->

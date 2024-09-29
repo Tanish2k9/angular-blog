@@ -2,25 +2,38 @@
     <div class="signup-container">
 
         <h1 class="title">Sign Up</h1>
-        <form class="form-container">
-            <div class="input-container">
+        <form [formGroup]="userForm" class="form-container" (ngSubmit)="onFormSubmit()">
+            <!-- <div class="input-container">
                 <label>FullName</label>
                 <input type="text">
-            </div>
+            </div> -->
             <div class="input-container">
                 <label>Email</label>
-                <input type="text">
+                <input type="text" formControlName="email">
+                <div class="errors-container" *ngIf="userForm.controls?.['email']?.touched">
+                    <span class="error-text" *ngIf="userForm.controls?.['email']?.errors?.['required']"> This Is Required</span>
+                    <!-- <span class="error-text" *ngIf="userForm.controls?.['email']?.errors?. ['minlnegth']"> This Is Required</span> -->
+                </div>
             </div>
             <div class="input-container">
                 <label>Username</label>
-                <input type="text">
+                <input type="text" formControlName="username">
+                <div class="errors-container" *ngIf="userForm.controls?.['username']?.touched">
+                    <span class="error-text" *ngIf="userForm.controls?.['username']?.errors?.['required']"> This Is Required</span>
+                    <span class="error-text" *ngIf="userForm.controls?.['username']?.errors?.['minlength']"> username should be atleast 10 character long</span>
+                </div>
             </div>
             <div class="input-container">
                 <label>Password</label>
-                <input type="text">
+                <input type="text" formControlName="password">
+                <div class="errors-container" *ngIf="userForm.controls?.['password']?.touched">
+                    <span class="error-text" *ngIf="userForm.controls?.['password']?.errors?.['required']"> This Is Required</span>
+                    <span class="error-text" *ngIf="userForm.controls?.['password']?.errors?.['minlength']">password should be atleast 10 character long</span>
+                </div>
             </div>
             <div class="btn-container">
                 <button class="btn">
+                    <app-api-loader *ngIf="isLoading"></app-api-loader>
                     Submit
                 </button>
             </div>

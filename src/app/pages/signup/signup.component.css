@@ -40,3 +40,6 @@ button{
     text-align: end;
     color: blue;
 }
+.error-text{
+    color: red;
+}
