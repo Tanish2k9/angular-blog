@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { CommonModule } from '@angular/common';
+import { User } from '../../models/ApiResponse';
 
 @Component({
   selector: 'app-post',
@@ -14,14 +15,12 @@ export class PostComponent implements OnInit {
 
   authService = inject(AuthServiceService);
 
-  isAdmin:boolean = false;
+  userData:User | null = null;
 
   ngOnInit(): void {
     this.authService.user$.subscribe({
       next:(res)=>{
-        if(res?.role === "ADMIN"){
-          this.isAdmin = true;
-        }
+        this.userData = this.authService.getUserDetail();
       }
     })
   }

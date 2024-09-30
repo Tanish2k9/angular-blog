@@ -1,7 +1,7 @@
 <div >
 
     <div class="functions-container" >
-        <div class="post-container" routerLink="/categories" *ngIf="isAdmin">
+        <div class="post-container" routerLink="/categories" *ngIf="userData?.role === 'ADMIN'">
             <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/post-2815587-2336706.png" alt="" class="post-img">
             <h2>Category</h2>
             <h3>You can manage Categories from here</h3>

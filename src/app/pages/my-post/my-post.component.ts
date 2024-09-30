@@ -21,7 +21,7 @@ export class MyPostComponent implements OnInit {
   myBlogs?:Post[];
 
   pageNumber=0;
-  pageSize= 1;
+  pageSize= 10;
   lastPage:boolean = false;
   totalElements=0;
   totalPages = 1;
@@ -60,7 +60,9 @@ export class MyPostComponent implements OnInit {
     this.postService.deletePost(postId.toString()).subscribe({
       next:(res)=>{
         console.log(res);
-        this.toastify.showSuccess(res.message,"SUCCESS")
+        this.toastify.showSuccess(res.message,"SUCCESS");
+        this.pageNumber = 0;
+
         this.getMyBlogs();
       },
       error:(err)=>{

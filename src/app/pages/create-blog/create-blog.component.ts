@@ -30,8 +30,8 @@ export class CreateBlogComponent implements OnInit {
   categories?:Category[];
 
   postForm:FormGroup = this.fb.group({
-    title: new FormControl('',[Validators.required,Validators.minLength(10)]),
-    content: new FormControl ('',[Validators.required, Validators.minLength(200)]),
+    title: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(200)]),
+    content: new FormControl ('',[Validators.required, Validators.minLength(1000)]),
     image: new FormControl(null,[Validators.required]),
     selectedCategoryId: new FormControl("",[Validators.required])
   });

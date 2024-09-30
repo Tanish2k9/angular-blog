@@ -1,14 +1,23 @@
 .wrapper{
-    
-    border: 1px solid white;
+    /* border:5px solid black; */
+    min-height: calc(100vh - 182px);
+    margin: -16px;
+    background-color: #DCDCDC ;
+    display: flex;
+    justify-content: center;
 }
 .title{
     text-align: center;
 }
 .signup-container{
+    width: 100%;
     max-width: 500px;
     border: 2px solid black;
+    border-radius: 12px;
     margin:16px auto;
+    background-color: white;
+    /* background: linear-gradient(to right, #A2C2E0, #E4F1F5) ;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .input-container{

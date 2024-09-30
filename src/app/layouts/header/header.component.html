@@ -2,7 +2,7 @@
 
 <div class="nav-container">
     <nav class=" global-wrapper" >
-        <div class="nav-logo">angular-blog</div>
+        <div class="nav-logo" routerLink="/">dev discussion</div>
         <div class="nav-links-container">
             <ul>
                 <li><a routerLink="/" class="nav-link">Home</a></li>
@@ -25,7 +25,42 @@
                 </div>
             }
         </div>
+        <div class="open-container " [ngClass] = "{'active': !openSidebar}" (click) = "toggleSidebar()">
+            <button class="btn">open</button>
+        </div>
+        <div class="sidebar" [ngClass] = "{'open': openSidebar}">
+            <div class="sidebar-container">
+        
+        
+                <div class="close-container" (click) = "toggleSidebar()">
+                    <button class="btn">Close</button>
+                </div>
+                @if(isLoggedIn){
+                    <div>
+                      Hi  {{ userData?.username}}
+                    </div>
+                }
+                <ul class="link-container">
+                    <li><a routerLink="/" class=" side-link">Home</a></li>
+                    <li><a routerLink="/popular" class=" side-link">Popular</a></li>
+                    <li><a routerLink="/all-blogs" class=" side-link">Search</a></li>
+                    <!-- <li><a href="#" class="nav-link">MostViewed</a></li> -->
+                    
+                    @if(isLoggedIn){
+                        <li><a routerLink="/post" class=" side-link">Post</a></li>
+                        <li><a  class=" side-link" (click)="logout()">Log Out</a></li>
+                    }
+                    @else {
+                        <li><a routerLink="/signup" class=" side-link">Sign Up</a></li>
+                        <li><a routerLink="/login" class=" side-link">Log In</a></li>
+                    }
+                </ul>
+                
+            </div>
+        </div>
+       
     </nav>
 </div>
+
 
 

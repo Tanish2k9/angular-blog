@@ -7,7 +7,7 @@
             <input type="text" formControlName="title">
             <div class="errors-container" *ngIf="postForm.controls?.['title']?.touched">
                 <span class="error-text" *ngIf="postForm.controls?.['title']?.errors?.['required']"> This Is Required</span>
-                <span class="error-text" *ngIf="postForm.controls?.['title']?.errors?.['minlength']">title must be at least 20 characters long</span>
+                <span class="error-text" *ngIf="postForm.controls?.['title']?.errors?.['minlength']">title must be between 3 to 200 character long</span>
             </div>
         </div>
         <div class="options-file-container">
@@ -23,7 +23,7 @@
             </div>
             <div class="input-container fix-width">
                 <label>Choose post image</label>
-                <input type="file" name="select post image" (change)="onFileChange($event)">
+                <input type="file" name="select post image"formControlName="image" (change)="onFileChange($event)">
                 <div class="errors-container" *ngIf="postForm.controls?.['image']?.touched">
                     <span class="error-text" *ngIf="postForm.controls?.['image']?.errors?.['required']"> This Is Required</span>
                 </div>
@@ -34,11 +34,12 @@
             <textarea name="" id="" rows="5" formControlName="content"></textarea>
             <div class="errors-container" *ngIf="postForm.controls?.['content']?.touched">
                 <span class="error-text" *ngIf="postForm.controls?.['content']?.errors?.['required']"> This Is Required</span>
-                <span class="error-text" *ngIf="postForm.controls?.['content']?.errors?.['minlength']">title must be at least 20 characters long</span>
+                <span class="error-text" *ngIf="postForm.controls?.['content']?.errors?.['minlength']">content must be 1000 character long</span>
             </div>
         </div>
         <div class=" btn-container">
-            <button class="btn" type="submit">
+            <button class="btn" type="submit" [disabled]="postForm.invalid
+            ">
                 <app-api-loader *ngIf="isApiLoading"></app-api-loader>
                 Submit</button>
         </div>

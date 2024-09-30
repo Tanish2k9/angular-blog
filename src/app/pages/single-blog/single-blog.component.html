@@ -3,7 +3,7 @@
 
         <div class="category-container">
             <div class="category">{{blogData?.category?.title}}</div>
-            <p class="created-at">{{blogData?.createdDate}}</p>
+            <p class="created-at">{{blogData?.createdDate | date: 'MMM d , y'}}</p>
         </div>
 
         <h2 class="title">{{blogData?.title}}</h2>
@@ -18,7 +18,7 @@
             {{blogData?.content}}
         </div>
         <div class="post-footer">
-            <p class="likes btn" (click)="onLike(blogData?.id)">likes {{likeCount}}</p>
+            <p class="likes btn" [ngClass] = "{'liked': liked}" (click)="onLike(blogData?.id)">likes {{likeCount}}</p>
             <p class="views">views({{blogData?.viewCount}})</p>
         </div>
         <div class="create-comment">
@@ -32,7 +32,7 @@
         <div class="comments-container">
             <h3 class="all-comments">comments({{totalElements}})</h3>
 
-            <div *ngIf="totalElements !=0">
+            <div class="all-comments-container" *ngIf="totalElements !=0">
                 <div class="user-comment-container" *ngFor="let comment of comments">
                     <!-- <div class="comment-user-data">
                         
@@ -73,7 +73,7 @@
 
                     </div>
                 </div>
-                <div *ngIf="!lastPage">
+                <div class="load-container" *ngIf="!lastPage">
                     <button class="btn" (click)="loadMore()" >Load more</button>
                 </div>
             </div>

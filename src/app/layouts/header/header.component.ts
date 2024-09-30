@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { User } from '../../models/ApiResponse';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -15,6 +16,9 @@ export class HeaderComponent implements OnInit {
   router:Router = inject(Router);
   isLoggedIn:boolean = false;
   userData:User | null = null;
+
+  openSidebar:boolean = false;
+
 
   ngOnInit(): void {
 
@@ -29,7 +33,14 @@ export class HeaderComponent implements OnInit {
       this.userData = this.authService.getUserDetail();
     }
    }) 
-  
+   console.log(this.openSidebar);
+  }
+
+  toggleSidebar(){
+
+    this.openSidebar = !this.openSidebar;
+  console.log(this.openSidebar);
+
   }
 
   logout(){

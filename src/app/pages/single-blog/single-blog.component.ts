@@ -43,7 +43,7 @@ export class SingleBlogComponent implements OnInit {
   //------------------------Pagination  for comments---------//
 
   pageNummber=0;
-  pageSize = 1;
+  pageSize = 10;
   lastPage:boolean = false;
   totalElements=0;
   totalPages = 1;
@@ -71,12 +71,8 @@ export class SingleBlogComponent implements OnInit {
         this.userData = this.authService.getUserDetail();
       }
      })
-
-    this.getBlogData(this.postId);
-    this.getSimilarBlogs(this.postId)
-    this.getBlogComments();
-   
   }
+
   onLoad(){
     this.getBlogData(this.postId);
     this.getSimilarBlogs(this.postId)

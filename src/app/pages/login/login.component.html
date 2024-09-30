@@ -9,10 +9,10 @@
             </div>
             <div class="input-container">
                 <label>Password</label>
-                <input type="text" formControlName="password">
+                <input type="password" formControlName="password">
             </div>
             <div class="btn-container">
-                <button class="btn">
+                <button class="btn" [disabled]="userForm.invalid">
                     <app-api-loader *ngIf="isLoading"></app-api-loader>
                     Submit
                     

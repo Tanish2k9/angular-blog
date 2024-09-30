@@ -18,8 +18,12 @@
   gap: 8px;
   align-items: center;
   cursor: pointer;
+  background: linear-gradient(to right, #A2C2E0, #E4F1F5) ;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
   &:hover{
-    background-color: aliceblue;
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
   }
  
 }

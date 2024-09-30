@@ -25,14 +25,14 @@
             </div>
             <div class="input-container">
                 <label>Password</label>
-                <input type="text" formControlName="password">
+                <input type="password" formControlName="password">
                 <div class="errors-container" *ngIf="userForm.controls?.['password']?.touched">
                     <span class="error-text" *ngIf="userForm.controls?.['password']?.errors?.['required']"> This Is Required</span>
                     <span class="error-text" *ngIf="userForm.controls?.['password']?.errors?.['minlength']">password should be atleast 10 character long</span>
                 </div>
             </div>
             <div class="btn-container">
-                <button class="btn">
+                <button class="btn" [disabled]="userForm.invalid">
                     <app-api-loader *ngIf="isLoading"></app-api-loader>
                     Submit
                 </button>
