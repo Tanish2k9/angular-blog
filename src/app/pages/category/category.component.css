@@ -17,6 +17,20 @@ input{
    flex:3;
    padding: 0px 16px;
 }
+svg{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+ 
+}
+.edit-add-cetegory{
+    display: flex;
+}
+.btn-group{
+    display: flex;
+    justify-content: center;
+    gap:8px;
+}
 .btn-action{
     flex-shrink: 1;
     white-space: nowrap;

@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl:"http://localhost:8080/api/"
+    apiUrl:"https://spring-blog-1.onrender.com/api/"
 };

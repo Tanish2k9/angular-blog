@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { CustomPaginationComponent } from "../../shared/custom-pagination/custom-pagination.component";
 import { PaginationResponse } from '../../models/ApiResponse';
 import { ToastifyService } from '../../services/toastify.service';
+import { PageLoaderComponent } from "../../shared/page-loader/page-loader.component";
+import { ApiLoaderComponent } from "../../shared/api-loader/api-loader.component";
 
 @Component({
   selector: 'app-my-post',
   standalone: true,
-  imports: [RouterModule, RouterLink, CommonModule, CustomPaginationComponent],
+  imports: [RouterModule, RouterLink, CommonModule, CustomPaginationComponent, PageLoaderComponent, ApiLoaderComponent],
   templateUrl: './my-post.component.html',
   styleUrl: './my-post.component.css'
 })
@@ -19,6 +21,19 @@ export class MyPostComponent implements OnInit {
   postService:PostService = inject(PostService);
   toastify:ToastifyService = inject(ToastifyService);
   myBlogs?:Post[];
+  isLoadingCount=0;
+
+  ApiLoading = {
+    deleteApi:0
+  }
+  private  setIsLoading(data:boolean,count =1){
+    if(data === true){
+      this.isLoadingCount = this.isLoadingCount +count;
+    }else if((data === false) && (this.isLoadingCount >0)){
+      this.isLoadingCount = this.isLoadingCount -count;
+    }
+  }
+
 
   pageNumber=0;
   pageSize= 10;
@@ -26,12 +41,14 @@ export class MyPostComponent implements OnInit {
   totalElements=0;
   totalPages = 1;
 
+
   ngOnInit(): void {
+    this.setIsLoading(true,1);
     this.getMyBlogs();
   }
 
   onPageChanged(data:number){
-    console.log(data);
+
     this.pageNumber = data;
     this.getMyBlogs();
   }
@@ -48,25 +65,27 @@ export class MyPostComponent implements OnInit {
       next:(res)=>{
         this.myBlogs= res.data;
         this.assignPagination(res);
+        this.setIsLoading(false);
       },
       error:(err)=>{
-        console.log(err);
+        this.setIsLoading(false);
         this.toastify.showError(err?.error?.errors?.[0],"ERROR")
       }
     })
   }
 
-  onDelete(postId:Number){
+  onDelete(postId:number){
+    this.ApiLoading.deleteApi = postId;
     this.postService.deletePost(postId.toString()).subscribe({
       next:(res)=>{
-        console.log(res);
+      
         this.toastify.showSuccess(res.message,"SUCCESS");
         this.pageNumber = 0;
-
         this.getMyBlogs();
+        this.ApiLoading.deleteApi = 0;
       },
       error:(err)=>{
-        console.log(err);
+        this.ApiLoading.deleteApi = 0;
         this.toastify.showError(err?.error?.errors?.[0],"ERROR")
       }
     })

@@ -42,3 +42,6 @@ button{
     padding: 8px 16px;
     font-size: 20px;
 }
+.error-text{
+    color:red;
+}

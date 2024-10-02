@@ -49,7 +49,7 @@ export class BlogsComponent implements OnInit {
 
   
   onPageChanged(data:number){
-    console.log(data);
+   
     this.pageNumber = data;
     this.getBlogsBySearch(this.searchField,this.selectedCategoryId);
   }
@@ -73,7 +73,7 @@ export class BlogsComponent implements OnInit {
         this.isApiLoading = false;
       },
       error:(err)=>{
-        console.log(err);
+   
         this.setIsLoading(false);
         this.toastify.showError(err?.error?.errors?.[0],"Error")
         this.isApiLoading = false;
@@ -89,14 +89,14 @@ export class BlogsComponent implements OnInit {
       },
       error:(err)=>{
         this.setIsLoading(false);
-        console.log(err);
+    
       }
     })
   }
   onSelectChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement; // Type the event
     this.selectedCategoryId = selectElement.value.toString()!; // Get the selected value
-    // console.log(this.selectedCategoryId,"------->")
+   
     this.getBlogsBySearch(this.searchField,this.selectedCategoryId)
   }
   onSend(){

@@ -50,13 +50,15 @@ export class LoginComponent {
           this.toastify.showSuccess("Login successfully","Success");
         },
         error:(err)=>{
-          console.log("Failled to login",err);
+          // console.log("Failled to login",err);
           this.isLoading = false;
           this.toastify.showError(err?.error?.errors?.[0],"Error")
         }
       })
     }else{
-      console.log("invalid login form");
+      // console.log("invalid login form");
+
+      this.toastify.showError("Invalid form","ERROR");
     }
   }
 

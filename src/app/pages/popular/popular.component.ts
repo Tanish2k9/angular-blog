@@ -32,7 +32,7 @@ export class PopularComponent implements OnInit{
 
 
   onPageChanged(data:number){
-    console.log(data);
+ 
     this.pageNumber = data;
     this.getPopularBlogs();
   }
@@ -61,7 +61,7 @@ export class PopularComponent implements OnInit{
         this.setIsLoading(false);
       },
       error:(err)=>{
-        console.log(err);
+    
         this.toastify.showError(err?.error.errors?.[0],"Error");
         this.setIsLoading(false);
       }

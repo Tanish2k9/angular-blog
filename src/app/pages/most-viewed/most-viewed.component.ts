@@ -32,7 +32,7 @@ export class MostViewedComponent implements OnInit {
 
 
   onPageChanged(data:number){
-    console.log(data);
+    // console.log(data);
     this.pageNumber = data;
     this.getMostViewedBlogs();
   }
@@ -63,7 +63,7 @@ export class MostViewedComponent implements OnInit {
         this.setIsLoading(false);
       },
       error:(err)=>{
-        console.log(err);
+      
         this.toastify.showError(err?.error.errors?.[0],"Error");
         this.setIsLoading(false);
       }

@@ -131,7 +131,7 @@ ul li{
         display: none;
     }
     
-    .open-container.active{
+    .open-container{
         display: block;
     }
 
@@ -141,8 +141,9 @@ ul li{
         display:block;
         min-height: 100vh;
         position: fixed;
-        border:1px solid red;
+        /* border:1px solid red; */
         background-color: white;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         z-index: 1;
         top: 0px;
         right: -786px;
@@ -150,8 +151,21 @@ ul li{
     }
     .sidebar.open{
         /* display: block; */
-        transition: all 1s ease;
+        /* transition: all 1s ease; */
         right: 0px;
+    }
+    .sidebar-user{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* margin-bottom: 16px; */
+    }
+    .close-btn{
+        width: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .close-container{
@@ -159,9 +173,13 @@ ul li{
         padding: 16px;
         /* border:1px solid blue; */
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         margin-bottom: 16px;
         align-items: center;
+        border-bottom: 2px solid black;
+    }
+    .close-container.show-user{
+        justify-content: space-between;
     }
     .link-container{
         display: flex;

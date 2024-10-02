@@ -1,4 +1,16 @@
 <div class="wrapper" >
+    <div class="test-cotainer">
+        <div class="info-container">
+            <h3>For Testing Purpose <span routerLink="/login">LOGIN</span> with This Credentials</h3>
+            <h4>User Credentials</h4>
+            <p class="note">email : test&commat;gmail.com</p>
+            <p class="note">password: test123</p>
+        <br>
+        <p>for ADMIN CREDENTIAL contact me at tanishchauhanofficial&commat;gmail.com</p>
+
+        <p class="note">Note: please upload appropriate post</p>
+        </div> 
+    </div>
     <div class="signup-container">
 
         <h1 class="title">Sign Up</h1>
@@ -20,7 +32,7 @@
                 <input type="text" formControlName="username">
                 <div class="errors-container" *ngIf="userForm.controls?.['username']?.touched">
                     <span class="error-text" *ngIf="userForm.controls?.['username']?.errors?.['required']"> This Is Required</span>
-                    <span class="error-text" *ngIf="userForm.controls?.['username']?.errors?.['minlength']"> username should be atleast 10 character long</span>
+                    <span class="error-text" *ngIf="userForm.controls?.['username']?.errors?.['minlength']"> username should be atleast 5 character long</span>
                 </div>
             </div>
             <div class="input-container">
@@ -28,7 +40,7 @@
                 <input type="password" formControlName="password">
                 <div class="errors-container" *ngIf="userForm.controls?.['password']?.touched">
                     <span class="error-text" *ngIf="userForm.controls?.['password']?.errors?.['required']"> This Is Required</span>
-                    <span class="error-text" *ngIf="userForm.controls?.['password']?.errors?.['minlength']">password should be atleast 10 character long</span>
+                    <span class="error-text" *ngIf="userForm.controls?.['password']?.errors?.['minlength']">password should be atleast 5 character long</span>
                 </div>
             </div>
             <div class="btn-container">

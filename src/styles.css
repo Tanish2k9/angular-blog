@@ -1,64 +1,12 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&display=swap');
-*/
 
-/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&family=Oswald:wght@200..700&display=swap'); */
-/* 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bebas+Neue&family=Lobster&family=Oswald:wght@200..700&display=swap'); */
-/* 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bebas+Neue&family=Lobster&family=Oswald:wght@200..700&family=Righteous&family=Satisfy&display=swap'); */
-/* 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bangers&family=Bebas+Neue&family=Lobster&family=Oswald:wght@200..700&family=Righteous&family=Satisfy&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     /* border: 1px solid blueviolet; */
-
 }
-/* body{
-  font-family: "Nerko One", cursive;
-  font-weight: 400;
-  font-style: normal;
-} */
-
-
-
-/* body{
-
-    font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-} */
-
-/* body{
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-} */
-
-/* body{
-    font-family: "Amatic SC", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-} */
-
-/* body{
-
-    font-family: "Righteous", sans-serif;
-  font-weight: 400;
-  font-style: normal
-} */
-
-/* body{
-    font-family: "Bangers", system-ui;
-  font-weight: 400;
-  font-style: normal;
-
-} */
 
 *:not(:defined){
     border: none;
@@ -94,7 +42,24 @@ a{
 
   text-decoration: none; /* Remove underline */
   color: inherit; 
+  position: relative;
 }
+
+a::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute; /* Position it absolutely */
+    left: 0; /* Start from the left */
+    bottom: -5px; /* Position it below the text */
+    width: 100%; /* Full width */
+    height: 2px; /* Line thickness */
+    background-color: #3498db; /* Line color */
+    transform: scaleX(0); /* Start with scale 0 */
+    transition: transform 0.3s ease; /* Smooth transition */
+  }
+  
+  a:hover::after {
+    transform: scaleX(1); /* Expand the line on hover */
+  }
 .global-wrapper{
     max-width: 1400px;
     margin-left: auto;

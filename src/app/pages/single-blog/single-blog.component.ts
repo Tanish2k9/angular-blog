@@ -11,11 +11,13 @@ import { Post } from '../../models/PostModel';
 import { PostService } from '../../services/post.service';
 import { ToastifyService } from '../../services/toastify.service';
 import { identity } from 'rxjs';
+import { PageLoaderComponent } from "../../shared/page-loader/page-loader.component";
+import { ApiLoaderComponent } from "../../shared/api-loader/api-loader.component";
 
 @Component({
   selector: 'app-single-blog',
   standalone: true,
-  imports: [CardComponent,CommonModule,FormsModule],
+  imports: [CardComponent, CommonModule, FormsModule, PageLoaderComponent, ApiLoaderComponent],
   templateUrl: './single-blog.component.html',
   styleUrl: './single-blog.component.css'
 })
@@ -27,6 +29,14 @@ export class SingleBlogComponent implements OnInit {
   toastify:ToastifyService = inject(ToastifyService);
   activatedRoute = inject(ActivatedRoute);
 
+  isLoadingCount=0;
+  isApiLoading = {
+    add:false,
+    update:-1,
+    delete:-1,
+    like:false,
+    loadMore:false
+  };
 
   addCommentField:String="";
   editCommentField:String="";
@@ -74,31 +84,45 @@ export class SingleBlogComponent implements OnInit {
   }
 
   onLoad(){
+    this.setIsLoading(true,3);
     this.getBlogData(this.postId);
     this.getSimilarBlogs(this.postId)
     this.getBlogComments();
   }
+  private  setIsLoading(data:boolean,count =1){
+    if(data === true){
+      this.isLoadingCount = this.isLoadingCount +count;
+    }else if((data === false) && (this.isLoadingCount >0)){
+      this.isLoadingCount = this.isLoadingCount -count;
+    }
+  }
 
   getBlogData(id:String){
+   
     this.postService.getPost(id).subscribe({
       next:(res)=>{
         this.blogData = res.data;
         this.liked = res.data.liked;
         this.likeCount = res.data.likeCount;
+        this.setIsLoading(false);
       },
       error:(err)=>{
-        this.toastify.showError(err?.error?.errors?.[0],"ERROR")
+        this.toastify.showError(err?.error?.errors?.[0],"ERROR");
+        this.setIsLoading(false);
       }
     })
   }
 
   getSimilarBlogs(id:String){
+  
     this.postService.getSimilarPosts(id).subscribe({
       next:(res)=>{
         this.similarBlog = res.data;
+        this.setIsLoading(false);
       },
       error:(err)=>{
         this.toastify.showError(err?.error?.errors?.[0],"ERROR");
+        this.setIsLoading(false);
       }
     })
   }
@@ -109,10 +133,12 @@ export class SingleBlogComponent implements OnInit {
       next:(res)=>{
         this.assignPagination(res);
         this.comments = res.data;
+        this.setIsLoading(false);
       },
       error:(err)=>{
-        console.log(err);
+      
         this.toastify.showError(err?.error?.errors?.[0],"ERROR");
+        this.setIsLoading(false);
       }
     })
   }
@@ -121,49 +147,56 @@ export class SingleBlogComponent implements OnInit {
     let data = {
       "content":this.addCommentField
     }
+    this.isApiLoading.add = true;
     this.commentService.addComment(this.postId,data).subscribe({
       next:(res)=>{
         this.getBlogComments();
         this.addCommentField="";
+        this.isApiLoading.add = false;
       },
       error:(err)=>{
-        console.log(err);
+       
         this.toastify.showError(err?.error?.errors?.[0],"ERROR");
+        this.isApiLoading.add = false;
       }
     })
   }
 
-  updateComment(id:Number){
+  updateComment(id:number){
     let data = {
       "content":this.editCommentField
     }
+    this.isApiLoading.update = id;
     this.commentService.updateComment(this.postId,id.toString(),data).subscribe({
       next:(res)=>{
         this.getBlogComments();
         this.addCommentField="";
         this.onCancel();
+        this.isApiLoading.update= -1;
 
       },
       error:(err)=>{
-        console.log(err);
+    
         this.toastify.showError(err?.error?.errors?.[0],"ERROR");
+        this.isApiLoading.update = -1;
       }
     })
   }
 
 
-  onDelete(id:Number){
-    
+  onDelete(id:number){
+    this.isApiLoading.delete = id;
     this.commentService.deleteComment(this.postId,id.toString()).subscribe({
       next:(res)=>{
         this.getBlogComments();
         this.addCommentField="";
         this.onCancel();
-
+        this.isApiLoading.delete = -1;
       },
       error:(err)=>{
-        console.log(err);
+       
         this.toastify.showError(err?.error?.errors?.[0],"ERROR");
+        this.isApiLoading.delete = -1;
       }
     })
   }
@@ -171,8 +204,10 @@ export class SingleBlogComponent implements OnInit {
 
 
   loadMore(){
+    this.isApiLoading.loadMore = true;
     this.pageSize = this.pageSize+1;
     this.getBlogComments();
+    this.isApiLoading.loadMore = false;
   }
 
   onEdit(id:Number,editData:String){
@@ -186,6 +221,7 @@ export class SingleBlogComponent implements OnInit {
   }
 
   onLike(id:any){
+    this.isApiLoading.like = true;
     this.postService.updatePostLikes(id).subscribe({
       next:(res)=>{
         this.liked = res.data;
@@ -194,9 +230,11 @@ export class SingleBlogComponent implements OnInit {
         }else{
           this.likeCount--;
         }
+        this.isApiLoading.like = false;
       },
       error:(err)=>{
         this.toastify.showError(err?.error?.errors?.[0],"ERROR")
+        this.isApiLoading.like = false;
       }
     })
   }

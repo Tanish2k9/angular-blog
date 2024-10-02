@@ -7,7 +7,7 @@
             <input type="text" formControlName="title">
             <div class="errors-container" *ngIf="updateForm.controls?.['title']?.touched">
                 <span class="error-text" *ngIf="updateForm.controls?.['title']?.errors?.['required']"> This Is Required</span>
-                <span class="error-text" *ngIf="updateForm.controls?.['title']?.errors?.['minlength']">title must be at least 20 characters long</span>
+                <span class="error-text" *ngIf="updateForm.controls?.['title']?.errors?.['minlength']">title must be between 3 to 200 character long</span>
             </div>
         </div>
         <div class="options-file-container">
@@ -31,11 +31,12 @@
             <textarea name="" id="" rows="5" formControlName="content"></textarea>
             <div class="errors-container" *ngIf="updateForm.controls?.['content']?.touched">
                 <span class="error-text" *ngIf="updateForm.controls?.['content']?.errors?.['required']"> This Is Required</span>
-                <span class="error-text" *ngIf="updateForm.controls?.['content']?.errors?.['minlength']">title must be at least 20 characters long</span>
+                <span class="error-text" *ngIf="updateForm.controls?.['content']?.errors?.['minlength']">content must be 1000 character long</span>
             </div>
         </div>
         <div class=" btn-container">
-            <button class="btn">
+            <button class="btn" [disabled]="updateForm.invalid
+            ">
                 <app-api-loader *ngIf="isApiLoading"></app-api-loader>
                 Update</button>
         </div>

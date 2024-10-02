@@ -31,8 +31,8 @@ export class UpdateBlogComponent implements OnInit{
   isApiLoading = false;
 
   updateForm:FormGroup = this.fb.group({
-    title: new FormControl( "",[Validators.required,Validators.minLength(10)]),
-    content: new FormControl ('',[Validators.required, Validators.minLength(200)]),
+    title: new FormControl( "",[Validators.required,Validators.minLength(3),Validators.maxLength(200)]),
+    content: new FormControl ('',[Validators.required, Validators.minLength(1000)]),
     image: new FormControl(null),
     selectedCategoryId: new FormControl( "",[Validators.required])
   });
@@ -54,18 +54,20 @@ export class UpdateBlogComponent implements OnInit{
         });
       },
       error:(err)=>{
-        console.log(err);
+  
+        this.toastify.showError(err?.error.errors[0],"Error");
       }
     });
   }
   getAllCategories(){
     this.categoryService.getAllCategories().subscribe({
       next:(res)=>{
-        console.log(res);
+  
         this.categories=res.data;
       },
       error:(err)=>{
-        console.log(err);
+   
+        this.toastify.showError(err?.error.errors[0],"Error");
       }
     })
   }
@@ -73,15 +75,16 @@ export class UpdateBlogComponent implements OnInit{
     this.isApiLoading = true;
     this.postService.updatePost(this.postId,data).subscribe({
       next:(res)=>{
-        console.log(res.data)
+       
         this.isApiLoading = false;
         this.updateForm.reset();
         this.router.navigate(["/my-posts"]);
         this.toastify.showSuccess("Post update successfully","Success");
       },
       error:(err)=>{
-        console.log(err);
+      
         this.isApiLoading = false;
+        this.toastify.showError(err?.error.errors[0],"Error");
         
       }
     })

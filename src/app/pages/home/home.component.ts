@@ -8,6 +8,7 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { PageLoaderComponent } from "../../shared/page-loader/page-loader.component";
 import { ApiLoaderComponent } from "../../shared/api-loader/api-loader.component";
 import { RouterModule } from '@angular/router';
+import { ToastifyService } from '../../services/toastify.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   http= inject(HttpClient);
   postService:PostService = inject(PostService);
   spinner = inject(NgxSpinnerService);
+  toastify = inject(ToastifyService);
   allBlogs?:Post[];
   popularBlogs?:Post[];
   mostViewedBlogs?:Post[];
@@ -40,14 +42,14 @@ export class HomeComponent implements OnInit {
     this.isLoadingCount++;
     this.postService.getAllPosts(this.pageNumber,this.pageSize).subscribe({
       next:(res)=>{
-        console.log(res);
+      
         this.allBlogs=res.data;
         this.spinner.hide();
         this.isLoadingCount--;
       },
       error:(err)=>{
-        console.log(err);
-
+       
+        this.toastify.showError(err?.error?.errors?.[0],"ERROR");
         this.isLoadingCount--;
       }
     })
@@ -57,14 +59,15 @@ export class HomeComponent implements OnInit {
     this.isLoadingCount++;
     this.postService.getPopularPosts(this.pageNumber,this.pageSize).subscribe({
       next:(res)=>{
-        console.log(res);
+        // console.log(res);
         this.popularBlogs=res.data;
         this.spinner.hide();
         this.isLoadingCount--;
         
       },
       error:(err)=>{
-        console.log(err);
+        // console.log(err);
+        this.toastify.showError(err?.error?.errors?.[0],"ERROR");
         this.isLoadingCount--;
       }
     })
@@ -73,13 +76,14 @@ export class HomeComponent implements OnInit {
     this.isLoadingCount++;
     this.postService.getMostViewedPosts(this.pageNumber,this.pageSize).subscribe({
       next:(res)=>{
-        console.log(res);
+        // console.log(res);
         this.mostViewedBlogs=res.data;
        this.isLoadingCount--;
         
       },
       error:(err)=>{
-        console.log(err);
+        // console.log(err);
+        this.toastify.showError(err?.error?.errors?.[0],"ERROR");
         this.isLoadingCount--;
       }
     })

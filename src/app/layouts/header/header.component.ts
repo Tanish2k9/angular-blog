@@ -33,13 +33,13 @@ export class HeaderComponent implements OnInit {
       this.userData = this.authService.getUserDetail();
     }
    }) 
-   console.log(this.openSidebar);
+
   }
 
   toggleSidebar(){
 
     this.openSidebar = !this.openSidebar;
-  console.log(this.openSidebar);
+
 
   }
 
@@ -48,5 +48,6 @@ export class HeaderComponent implements OnInit {
     this.authService.isLoggedIn$.next(false);
     this.authService.user$.next(null);
     this.router.navigateByUrl("/login");
+    this.openSidebar = !this.openSidebar;
   }
 }

@@ -55,12 +55,12 @@ export class CreateBlogComponent implements OnInit {
     this.isApiLoading = true;
     this.categoryService.getAllCategories().subscribe({
       next:(res)=>{
-        console.log(res);
+    
         this.categories=res.data;
         this.isApiLoading = false;
       },
       error:(err)=>{
-        console.log(err);
+     
         this.isApiLoading = false;
         this.toastify.showError(err?.error.errors[0],"Error");
       }
@@ -90,14 +90,14 @@ export class CreateBlogComponent implements OnInit {
 
     this.postService.createPost(data).subscribe({
       next:(res)=>{
-        console.log(res.data)
+     
         this.isApiLoading = false;
         this.postForm.reset();
         this.router.navigate(["/my-posts"]);
         this.toastify.showSuccess("blog created successfully","success");
       },
       error:(err)=>{
-        console.log(err.error);
+       
         this.isApiLoading = false;
         this.toastify.showError(err?.error.errors[0],"Error");
       }

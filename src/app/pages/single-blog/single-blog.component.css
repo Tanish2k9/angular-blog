@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 .single-page-container{
     display: grid;
     grid-template-columns: minmax(400px, 3fr) minmax(300px, 1fr); /* Responsive column sizes */
     gap: 30px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
 }
 .category-container{
     display: flex;
@@ -17,6 +21,9 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
 }
+.title{
+    margin:8px 0px;
+}
 .blog-img{
     width: 100%;
     height: 400px;
@@ -25,6 +32,7 @@
 .content-container{
     word-wrap: break-word;
     word-break: break-all;
+    white-space:pre-wrap;
 }
 .author-data{
     display: flex;
@@ -52,9 +60,19 @@
     align-items:start;
     margin:8px 0px;
 }
+svg{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+ 
+}
 
 .likes{
     border:2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:4px;
 }
 textarea{
     width: 100%;
@@ -70,7 +88,6 @@ textarea{
     margin:16px 0px;
 }
 .all-comments-container{
-    border:1px solid red;
     max-height: 500px;
     overflow-y: scroll;
     background-color: #DCDCDC;

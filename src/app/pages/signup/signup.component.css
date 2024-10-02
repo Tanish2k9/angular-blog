@@ -1,10 +1,11 @@
 .wrapper{
     /* border:5px solid black; */
-    min-height: calc(100vh - 182px);
+    /* min-height: calc(100vh - 182px); */
     margin: -16px;
     background-color: #DCDCDC ;
-    display: flex;
-    justify-content: center;
+    padding:16px ;
+    /* display: flex;
+    justify-content: center; */
 }
 .title{
     text-align: center;
@@ -14,10 +15,30 @@
     max-width: 500px;
     border: 2px solid black;
     border-radius: 12px;
-    margin:16px auto;
+    margin:0px  auto 0px auto;
+    
     background-color: white;
     /* background: linear-gradient(to right, #A2C2E0, #E4F1F5) ;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.test-cotainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* background-color: white; */
+    padding: 16px;
+}
+.note{
+    background-color: wheat;
+    padding:2px 0px;
+}
+.info-container{
+    padding: 16px 0px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
 }
 
 .input-container{
@@ -51,4 +72,8 @@ button{
 }
 .error-text{
     color: red;
+}
+span{
+    color: blue;
+    cursor: pointer;
 }

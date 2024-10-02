@@ -8,8 +8,27 @@
     min-height: calc(100vh - 182px);
     margin: -16px;
     background-color: #DCDCDC ;
+    padding: 16px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.test-cotainer{
     display: flex;
     justify-content: center;
+    align-items: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+.note{
+    background-color: wheat;
+    padding:2px 0px;
+}
+.info-container{
+    padding: 16px 0px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
 }
 .title{
     text-align: center;

@@ -41,7 +41,7 @@ export class SignupComponent {
       
       this.authService.signup(obj).subscribe({
         next:(res)=>{
-          console.log(res);
+         
           this.isLoading = false;
           this.router.navigate(["/login"])
           this.toastify.showSuccess("Account created successfully","Success");
@@ -52,7 +52,7 @@ export class SignupComponent {
         }
       });
     }else{
-      console.log("invalid form");
+      this.toastify.showError("Invalid form","ERROR");
     }
     // console.log(this.userForm);
     // console.log(this.userForm.value);
