@@ -45,3 +45,9 @@ button{
 .error-text{
     color:red;
 }
+
+@media (max-width:768px) {
+    .fix-width{
+        width: 100%;
+    }
+}

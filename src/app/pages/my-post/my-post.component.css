@@ -55,7 +55,8 @@ th {
 }
 img {
     max-width: 100px; /* Adjust size of images */
-    height: auto;
+    max-height: 50px;
+    object-fit: cover;
 }
 .column-1 {
     width: 5%; /* Narrow width for S.No. */
@@ -65,6 +66,7 @@ img {
 }
 .column-3 {
     width: 45%; /* Even wider for Title */
+    word-break: break-all;
 }
 .column-4 {
     width: 20%; /* Width for Action column */
@@ -74,4 +76,26 @@ img {
     display: flex;
     justify-content: center;
     margin-top: 24px;
+}
+
+@media (max-width:768px) {
+    .column-1 {
+        width: 1%; /* Narrow width for S.No. */
+        max-width: 40px;
+    }
+    .column-2 {
+        width: 5%; /* Wider width for Image */
+    }
+    .column-3 {
+        width: 70% !important; /* Even wider for Title */
+    }
+    .column-4 {
+        width: 20% !important; /* Width for Action column */
+    }
+
+    .buttons-container{
+        display: flex;
+        justify-content: center;
+        gap:3px;
+    }
 }
